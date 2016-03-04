@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
@@ -26,10 +27,18 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
 
         // Do any additional setup after loading the view.
     }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func updateProfileImage(){
+        
+        var user = PFUser.currentUser()!
+        
+        
     }
     
     @IBAction func pickPhoto(sender: AnyObject) {
@@ -47,8 +56,39 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
             // Get the image captured by the UIImagePickerController
             let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             
+            getPFFileFromImage(originalImage)
+             let user = PFUser.currentUser()!
+            
+            user["profileImage"] = getPFFileFromImage(originalImage)
+            
+            user.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                   print("The object has been saved")
+                } else {
+                  print("The object did not saved")
+                }
+            }
+
+            dismissViewControllerAnimated(true, completion: nil)
+
             // Do something with the images (based on your use case)
           
+    }
+    func getPFFileFromImage(image: UIImage?) -> PFFile? {
+        // check if image is not nil
+        if let image = image {
+            // get image data and check if that is not nil
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
+    }
+
+    @IBAction func onLogout(sender: AnyObject) {
+        PFUser.logOut()
+        performSegueWithIdentifier("LogoutSegue", sender: nil)
     }
 
     /*

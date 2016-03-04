@@ -13,8 +13,9 @@ import ParseUI
 class PhotoCell: UITableViewCell {
 
    
+    @IBOutlet weak var profileImage: UIImageView!
 
-    @IBOutlet weak var postImage: PFImageView!
+    @IBOutlet weak var postedImage: UIImageView!
     
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -22,47 +23,58 @@ class PhotoCell: UITableViewCell {
  
     @IBOutlet weak var timeStampLabel: UILabel!
     
-    var instagramPost: PFObject!{
+    var getPhotoandCaption: PFObject! {
         didSet {
-            
-            captionLabel.text = instagramPost["caption"] as? String
-          self.postImage.file = instagramPost!["media"] as? PFFile
-            self.postImage.loadInBackground()
-            
+            self.captionLabel.text = getPhotoandCaption["caption"] as? String
+        
             let username = PFUser.currentUser()?.username as String!
             usernameLabel.text = username
             
-            
-            let createdAt = instagramPost?.createdAt
+            let createdAt = getPhotoandCaption?.createdAt
             
             if createdAt != nil {
                 var formatter = NSDateFormatter()
                 formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
                 
-                
+            
                 timeStampLabel.text = calculateTime((createdAt?.timeIntervalSinceNow)!)
             } else {
                 timeStampLabel.hidden = true
             }
-            
-            let caption = instagramPost!["caption"] as? String
-            if caption != nil {
-                captionLabel.text = instagramPost!["caption"] as? String
-                
-            } else {
-                captionLabel.hidden = true
-            }
 
+            
+           let user = PFUser.currentUser()
+            
+            if user!["profileImage"] == nil {
+                profileImage.image = UIImage(named: "profileDefault.png")
+            } else {
+                let profilePicture = user!["profileImage"] as! PFFile
+                profilePicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        self.profileImage.image = UIImage(data:imageData!)
+                    }
+            }
+            }
+            
+        
+            if let userPicture = /*PFUser.currentUser()?*/getPhotoandCaption["media"] as? PFFile {
+                userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        self.postedImage.image = UIImage(data:imageData!)
+                    }
+                }
+            }
         }
     }
-   
-
+    
     func calculateTime(timeIntervalSinceNow: NSTimeInterval) -> String{
         
         var rawTime = Int(timeIntervalSinceNow)
         var time: Int = 0
         var timeChar = ""
-    
+        
+        rawTime = rawTime * (-1)
+        
         print("rawTime:\(rawTime)")
         if (rawTime <= 60) {
             time = rawTime
@@ -82,20 +94,18 @@ class PhotoCell: UITableViewCell {
             timeChar = "y"
         }
         
-        return "\(time)\(timeChar)"
+        return "\(time * -1)\(timeChar)"
     }
-    
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
 }

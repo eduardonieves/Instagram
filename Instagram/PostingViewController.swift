@@ -83,18 +83,21 @@ class PostingViewController: UIViewController,UIImagePickerControllerDelegate, U
         return newImage
     }
 
+    @IBAction func backHome(sender: AnyObject) {
+    performSegueWithIdentifier("HomeSegue", sender: nil)
+    }
     @IBAction func postPhoto(sender: AnyObject) {
         if postingImageView?.image != nil && captionTextField.text!.characters.count>0{
             let resizedimage = resize(image, newSize:CGSize(width: 300, height: 200))
             Post.postUserImage(resizedimage, withCaption: captionTextField.text, withCompletion: nil)
             print("succesfully posted")
-           // DoneHUD.showInView(self.view, message: "Done")
             
             let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC))
             dispatch_after(time, dispatch_get_main_queue()) {
                 self.tabBarController?.selectedIndex = 0
             }
             dismissViewControllerAnimated(true, completion: nil)
+            performSegueWithIdentifier("HomeSegue", sender: nil)
         }else {
             let alert = UIAlertController(title: "Empty image or caption", message: "You must add an image and there must be a caption to upload the post", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))

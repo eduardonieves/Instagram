@@ -46,6 +46,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func onSignUp(sender: AnyObject) {
         let newUser = PFUser()
+
         
         newUser.username = usernameField.text
         newUser.password = passwordField.text
@@ -53,13 +54,13 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 print("You Signed Up")
+                self.performSegueWithIdentifier("LoginSegue", sender: nil)
             } else {
                 print(error?.localizedDescription)
                 if error?.code == 202 {
                     
                     print("Username is taken")
                     
-                    self.performSegueWithIdentifier("LoginSegue", sender: nil)
                     
                 } else {
                     //show alert

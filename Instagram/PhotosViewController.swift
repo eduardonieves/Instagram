@@ -12,6 +12,8 @@ import Parse
 class PhotosViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var noPostView: UIView!
    var posts:[PFObject]?
 
     override func viewDidLoad() {
@@ -64,8 +66,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource,UITableViewD
    
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if posts?.count>0 {
+            noPostView.hidden = true
             return (posts?.count)!
         }else {
+            noPostView.hidden = false
             return 0
         }
     }
@@ -77,7 +81,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource,UITableViewD
         
         let post = posts![indexPath.row]
         
-        cell.instagramPost = post
+        cell.getPhotoandCaption = post
     
         return cell
         

@@ -24,14 +24,18 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvN-12-wvL">
                                 <rect key="frame" x="40" y="264" width="240" height="30"/>
-                                <state key="normal" title="Sign In"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EjW-FW-JZh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoX-jq-fsu">
                                 <rect key="frame" x="40" y="309" width="240" height="30"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fIw-Bh-TKO"/>
                                 </connections>
@@ -42,7 +46,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.34783108308875654" green="0.74355885775632125" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.28138259925645737" green="0.60499279973437881" blue="0.81601167929292928" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="2EJ-dG-ouW" appends="YES" id="DLF-EO-AkL"/>
@@ -76,7 +80,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="360" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M2k-I7-jSA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="360" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M2k-I7-jSA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -135,18 +139,34 @@
                                                 <constraint firstItem="CJb-cj-HBd" firstAttribute="top" secondItem="oMF-fG-emd" secondAttribute="bottom" constant="17" id="yPk-0c-Qji"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.20947943513637257" green="0.35046688795698538" blue="0.9326073232090909" alpha="0.81000000000000005" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="captionLabel" destination="CJb-cj-HBd" id="q65-xk-Pt2"/>
-                                            <outlet property="postImage" destination="oMF-fG-emd" id="mXG-Pe-Kda"/>
+                                            <outlet property="postedImage" destination="oMF-fG-emd" id="5lG-PN-5Hy"/>
+                                            <outlet property="profileImage" destination="Woh-4H-FN7" id="llI-Sw-cna"/>
                                             <outlet property="timeStampLabel" destination="AQj-xR-1WO" id="oYI-GU-iEd"/>
                                             <outlet property="usernameLabel" destination="gEN-bk-iUf" id="T8w-W7-FND"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hse-Ls-CDt" userLabel="NoPostView">
+                                <rect key="frame" x="66" y="244" width="189" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="There are no Posts!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-3F-895">
+                                        <rect key="frame" x="20" y="5" width="149" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sadFace.png" translatesAutoresizingMaskIntoConstraints="NO" id="brx-nd-QrC">
+                                        <rect key="frame" x="79" y="29" width="31" height="33"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.2094794351" green="0.35046688799999998" blue="0.93260732319999995" alpha="0.81000000000000005" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="M2k-I7-jSA" secondAttribute="bottom" id="EaZ-re-N8J"/>
                             <constraint firstAttribute="trailing" secondItem="M2k-I7-jSA" secondAttribute="trailing" id="FJw-2e-CcS"/>
@@ -165,26 +185,27 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Gf3-Kg-phT">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yxT-OQ-Ah0">
-                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="06Q-JB-6Ar">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2k0-6S-nUa">
+                                <rect key="frame" x="244" y="-13" width="60" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="camara.png"/>
                                 <connections>
-                                    <segue destination="vVW-Jh-u0v" kind="presentation" id="cdV-DA-NZ4"/>
+                                    <segue destination="vVW-Jh-u0v" kind="presentation" id="j8M-K4-QaO"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="noPostView" destination="hse-Ls-CDt" id="cZn-aR-AgB"/>
                         <outlet property="tableView" destination="M2k-I7-jSA" id="F86-CI-bT1"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogoutSegue" modalTransitionStyle="flipHorizontal" id="bL4-5i-8JK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zI5-Kz-wk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="298"/>
+            <point key="canvasLocation" x="972" y="298"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="FBw-QR-Dyx">
@@ -206,11 +227,26 @@
                                     <action selector="pickPhoto:" destination="fCD-3T-eWg" eventType="touchUpInside" id="iBQ-xy-sio"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-XN-YMx">
+                                <rect key="frame" x="60" y="180" width="200" height="38"/>
+                                <color key="backgroundColor" red="1" green="0.070236308712234075" blue="0.0" alpha="0.81000000000000005" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogout:" destination="fCD-3T-eWg" eventType="touchUpInside" id="krA-e8-KjV"/>
+                                    <action selector="pickPhoto:" destination="fCD-3T-eWg" eventType="touchUpInside" id="Q9W-t9-gvw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Pla-Ji-c3c"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogoutSegue" modalTransitionStyle="flipHorizontal" id="k9U-gT-Pjo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZ3-XF-pvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -231,8 +267,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JaI-OJ-jKK">
                                 <rect key="frame" x="0.0" y="64" width="320" height="190"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-4k-vCc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-4k-vCc">
                                 <rect key="frame" x="0.0" y="253" width="320" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -247,13 +284,20 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Vmb-9S-LEJ" appends="YES" id="5DD-2T-1KP"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="r4B-Px-avf">
+                        <barButtonItem key="leftBarButtonItem" image="backButton.png" id="bQW-vP-CwJ">
+                            <inset key="imageInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backHome:" destination="lHC-zg-ddK" id="MUu-Pm-e1p"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="PostImage.png" id="mDo-M9-Okb">
                             <inset key="imageInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -276,7 +320,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1732" y="298"/>
+            <point key="canvasLocation" x="1691" y="298"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vno-vI-gk0">
@@ -324,6 +368,7 @@
         <!--Upload-->
         <scene sceneID="L7x-HG-qp7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbt-si-Q1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vVW-Jh-u0v" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Upload" image="PostImage.png" id="0XV-kT-drg"/>
                     <toolbarItems/>
@@ -338,15 +383,14 @@
                         <segue destination="lHC-zg-ddK" kind="relationship" relationship="rootViewController" id="XN4-rE-BOd"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rbt-si-Q1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1336" y="298"/>
         </scene>
-        <!--Item-->
+        <!--User-->
         <scene sceneID="pLa-Cf-9a0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rWc-4r-Ngy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LMP-du-GMW"/>
+                    <tabBarItem key="tabBarItem" title="User" image="User.png" id="LMP-du-GMW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZeQ-xS-Z75">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -366,9 +410,14 @@
     <resources>
         <image name="Home.png" width="30" height="30"/>
         <image name="PostImage.png" width="50" height="50"/>
+        <image name="User.png" width="30" height="30"/>
+        <image name="backButton.png" width="30" height="30"/>
+        <image name="camara.png" width="100" height="100"/>
         <image name="logout.png" width="30" height="30"/>
+        <image name="sadFace.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CHD-YD-6Cf"/>
+        <segue reference="bL4-5i-8JK"/>
     </inferredMetricsTieBreakers>
 </document>
